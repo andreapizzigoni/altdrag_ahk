@@ -58,7 +58,6 @@ Alt & LButton::{
     ; https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-notifywinevent
     DllCall('User32\NotifyWinEvent', 'uint', EVENT_SYSTEM_MOVESIZESTART, 'ptr', HWND_window, 'int', 0, 'int', 0)
     
-    ; Inizio lo spostamento
     SetTimer dragWindow, 15
     return
 
@@ -67,7 +66,6 @@ Alt & LButton::{
 
     dragWindow(){
 
-        ; Ottengo le coordinate del mouse e della finestra da spostare
         MouseGetPos( &mouse_current_x, &mouse_current_y )											
         WinGetPos( &window_start_x, &window_start_y, &window_width, &window_height, HWND_window )
 
@@ -92,7 +90,6 @@ Alt & LButton::{
         new_x := window_start_x + delta_x
         new_y := window_start_y + delta_y
 
-        ; Porto in primo piano la finestra e la sposto
         WinActivate( HWND_window )
         WinMove( new_x, new_y, window_width, window_height, HWND_window )
         
@@ -108,7 +105,6 @@ Alt & LButton::{
         MouseGetPos( &mouse_current_x, &mouse_current_y )
         monitor_number := getMonitorFromMouse()
 
-
         ; Se la finestra era massimizzata ed ha cambiato schermo --> MASSIMIZZO
         if( window_minmax = 1 && ( monitor_number_start != monitor_number ) )
         {
@@ -118,7 +114,6 @@ Alt & LButton::{
             return
         }
 
-        ; Controllo posizione per attivazione snaps ai bordi dello schermo
         MonitorGetWorkArea( monitor_number, &left_bound, &top_bound, &right_bound, &bottom_bound )
 
         if( mouse_current_x >= (right_bound - LR_BOUND_SENSIVITY) ){
