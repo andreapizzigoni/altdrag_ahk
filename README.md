@@ -1,7 +1,7 @@
 # workspace_utilities
 AutoHotKey - ahk **2.0**: AltDrag, AltResize, AltMove
 
-Should work with multiple monitors and works with FancyZones.
+Basic script that works with FancyZones.
 
 ### AltDrag
 
