@@ -188,13 +188,14 @@ getMonitorFromMouse(){
 	monitor_count := MonitorGetCount()
 
 	Loop monitor_count {
+
 		MonitorGetWorkArea( A_Index, &left_bound, &top_bound, &right_bound, &bottom_bound )
 
-        if (mouse_x >= left_bound) && (mouse_x < right_bound) && (mouse_y >= top_bound) && (mouse_y < bottom_bound){
+	        if (mouse_x >= left_bound) && (mouse_x < right_bound) && (mouse_y >= top_bound) && (mouse_y < bottom_bound){
 
 			monitor_number := A_Index
 			
-            break
+        		break
 		}
 
 	}
