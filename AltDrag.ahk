@@ -71,13 +71,12 @@ Alt & LButton::{
         MouseGetPos( &mouse_current_x, &mouse_current_y )											
         WinGetPos( &window_start_x, &window_start_y, &window_width, &window_height, HWND_window )
 
-        ; Termino il drag se il tast Sx del mouse non è più premuto
+        ; Termino il drag
         if( !GetKeyState("LButton", "P") ){
 
-            ; Termino lo spostamento
             SetTimer dragWindow, 0
              
-            ; Termino evento di spostamento per attivare le FancyZones
+            ; Termino evento di spostamento per FancyZones
             DllCall('User32\NotifyWinEvent', 'uint', EVENT_SYSTEM_MOVESIZEEND, 'ptr', HWND_window, 'int', 0, 'int', 0)
     
             ; TODO: rimouvere o disattivare se SHIFT è premuto
