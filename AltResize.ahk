@@ -5,13 +5,12 @@ SetWinDelay( -1 )
 ; ------ RESIZE FINESTRA O MINIMIZE ------
 Alt & RButton::{
 
-	; Recupero informazioni posizione Mouse e window Sottostante
     MouseGetPos( &mouse_start_x, &mouse_start_y, &HWND_window )
     WinGetPos( &window_start_x, &window_start_y, &window_width, &window_height, HWND_window )
-	classe := WinGetClass( HWND_window )
+    classe := WinGetClass( HWND_window )
 	
     ; Ignoro elementi del desktop e barre di sistema
-	try{
+    try{
 		if( classe == "Progman" || classe == "Shell_TrayWnd" || classe == "Shell_SecondaryTrayWnd" || classe == "WorkerW" ){
 			return ; TODO: fix this mess
 		}
