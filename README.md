@@ -1,7 +1,7 @@
 # workspace_utilities
 AutoHotKey: AltDrag, AltResize, AltMove
 
-Should work with multiple monitors
+Should work with multiple monitors and works with FancyZones.
 
 ### AltDrag
 
