@@ -21,7 +21,7 @@ Alt & LButton::{
     global HWND_window
 
     MouseGetPos( &mouse_start_x, &mouse_start_y, &HWND_window )
-	window_minmax := WinGetMinMax( HWND_window )
+    window_minmax := WinGetMinMax( HWND_window )
     monitor_number_start := getMonitorFromMouse()
 
 	
@@ -38,10 +38,10 @@ Alt & LButton::{
     	
     	WinGetPos( &window_start_x, &window_start_y, &window_width, &window_height, HWND_window )
 
-		perc_width  := Floor(( ABS(window_start_x - mouse_start_x) / window_width  )  * 100 )
-		perc_height := Floor(( ABS(window_start_y - mouse_start_y) / window_height ) * 100 )
+	perc_width  := Floor(( ABS(window_start_x - mouse_start_x) / window_width  )  * 100 )
+	perc_height := Floor(( ABS(window_start_y - mouse_start_y) / window_height ) * 100 )
     
-		; Restore della finestra e la sposto per mantenere la posizione relativa
+	; Restore della finestra e la sposto per mantenere la posizione relativa
         WinRestore( HWND_window )
         WinGetPos( &window_start_x, &window_start_y, &window_width, &window_height, HWND_window )
 
