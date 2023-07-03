@@ -22,7 +22,7 @@ Alt & LButton::{
 
     MouseGetPos( &mouse_start_x, &mouse_start_y, &HWND_window )
     window_minmax := WinGetMinMax( HWND_window )
-    monitor_number_start := getMonitorFromMouse()
+    monitor_number_start := getMonitorFromCoords(mouse_start_x, mouse_start_y)
 
 	
     ; Se è restored ed è un doppio click --> MASSIMIZZO
@@ -103,7 +103,7 @@ Alt & LButton::{
     handleSnapping(){
         
         MouseGetPos( &mouse_current_x, &mouse_current_y )
-        monitor_number := getMonitorFromMouse()
+        monitor_number := getMonitorFromCoords(mouse_current_x ,mouse_current_y)
 
         ; Se la finestra era massimizzata ed ha cambiato schermo --> MASSIMIZZO
         if( window_minmax = 1 && ( monitor_number_start != monitor_number ) )
@@ -175,9 +175,7 @@ Alt & LButton::{
 
 }
 
-getMonitorFromMouse(){
-
-	MouseGetPos( &mouse_x, &mouse_y )
+getMonitorFromCoords(x ,y){
 
 	monitor_count := MonitorGetCount()
 
@@ -185,7 +183,7 @@ getMonitorFromMouse(){
 
 		MonitorGetWorkArea( A_Index, &left_bound, &top_bound, &right_bound, &bottom_bound )
 
-	        if (mouse_x >= left_bound) && (mouse_x < right_bound) && (mouse_y >= top_bound) && (mouse_y < bottom_bound){
+	        if (x >= left_bound) && (x <= right_bound) && (y >= top_bound) && (y <= bottom_bound){
 
 			monitor_number := A_Index
 			
