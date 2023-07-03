@@ -178,6 +178,7 @@ Alt & LButton::{
 getMonitorFromCoords(x ,y){
 
 	monitor_count := MonitorGetCount()
+	monitor_number := 1
 
 	Loop monitor_count {
 
