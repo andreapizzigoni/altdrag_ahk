@@ -52,7 +52,11 @@ Alt & \::{
     Alt & +::{
        
         WinGetPos( &x, &y, &width, &height, WinGetTitle("A") )
-        MonitorGetWorkArea( getMonitorFromMouse(), &left_bound, &top_bound, &right_bound, &bottom_bound )
+        
+        center_x := x + (width / 2)
+        center_y := y + (height / 2)
+
+        MonitorGetWorkArea( getMonitorFromCoords(center_x, center_y), &left_bound, &top_bound, &right_bound, &bottom_bound )
 
         new_x := x - (WIDTH_STEP  / 2)
         new_y := y - (HEIGHT_STEP / 2)
@@ -83,7 +87,11 @@ Alt & \::{
     Alt & -::{
        
         WinGetPos( &x, &y, &width, &height, WinGetTitle("A") )
-        MonitorGetWorkArea( getMonitorFromMouse(), &left_bound, &top_bound, &right_bound, &bottom_bound )
+ 
+        center_x := x + (width / 2)
+        center_y := y + (height / 2)
+
+        MonitorGetWorkArea( getMonitorFromCoords(center_x, center_y), &left_bound, &top_bound, &right_bound, &bottom_bound )
 
         new_x := x + (WIDTH_STEP  / 2)
         new_y := y + (HEIGHT_STEP / 2)
@@ -97,8 +105,8 @@ Alt & \::{
     
     Alt & Enter::{
 
-        MonitorGetWorkArea( getMonitorFromMouse(), &left_bound, &top_bound, &right_bound, &bottom_bound )
-        WinGetPos( &x, &y, &width, &height, WinGetTitle("A") )
+	WinGetPos( &x, &y, &width, &height, WinGetTitle("A") )        
+	MonitorGetWorkArea( getMonitorFromCoords(x, y), &left_bound, &top_bound, &right_bound, &bottom_bound )
 
         window_center_x := width  / 2
         window_center_y := height / 2
@@ -140,20 +148,20 @@ Alt & \::{
 
 #HotIf
 
-getMonitorFromMouse(){
-
-	MouseGetPos( &mouse_x, &mouse_y )
+getMonitorFromCoords(x ,y){
 
 	monitor_count := MonitorGetCount()
+    	monitor_number := 1
 
 	Loop monitor_count {
+
 		MonitorGetWorkArea( A_Index, &left_bound, &top_bound, &right_bound, &bottom_bound )
 
-        if (mouse_x >= left_bound) && (mouse_x < right_bound) && (mouse_y >= top_bound) && (mouse_y < bottom_bound){
+	        if (x >= left_bound) && (x <= right_bound) && (y >= top_bound) && (y <= bottom_bound){
 
 			monitor_number := A_Index
 			
-            break
+        		break
 		}
 
 	}
