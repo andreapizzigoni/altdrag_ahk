@@ -1,5 +1,5 @@
-# workspace_utilities
-AutoHotKey - ahk **2.0**: AltDrag, AltResize, AltMove
+# AltDrag, AltResize, AltMove
+AutoHotKey - ahk **2.0**
 
 Basic script that works with FancyZones.
 
